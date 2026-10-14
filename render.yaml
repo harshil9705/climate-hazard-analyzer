@@ -1,0 +1,21 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: climate-hazard-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: MONGODB_URI
+        sync: false # set in the Render dashboard (MongoDB Atlas connection string)
+      - key: MONGODB_DB
+        value: climate_hazards
+      - key: CORS_ORIGINS
+        sync: false # e.g. https://your-app.vercel.app
+      - key: TRUST_PROXY_HEADERS
+        value: "true"

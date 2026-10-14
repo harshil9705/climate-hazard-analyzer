@@ -1,0 +1,18 @@
+# Local full stack with a real MongoDB:  docker compose up --build
+# API -> http://localhost:8000/docs   (run the frontend separately with `npm run dev:frontend`)
+services:
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+
+  api:
+    build: ./backend
+    environment:
+      MONGODB_URI: mongodb://mongo:27017
+      CORS_ORIGINS: http://localhost:5173
+    ports: ["8000:8000"]
+    depends_on: [mongo]
+
+volumes:
+  mongo-data:

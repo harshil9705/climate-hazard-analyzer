@@ -1,0 +1,12 @@
+{
+  "name": "climate-hazard-trend-analyzer",
+  "private": true,
+  "description": "Monorepo: FastAPI backend (backend/) + React frontend (frontend/)",
+  "scripts": {
+    "install:frontend": "npm --prefix frontend install",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:frontend": "npm --prefix frontend test",
+    "typecheck:frontend": "npm --prefix frontend run typecheck"
+  }
+}
